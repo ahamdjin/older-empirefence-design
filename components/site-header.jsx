@@ -60,15 +60,13 @@ export function SiteHeader() {
     return () => document.body.classList.remove("nav-open");
   }, [open]);
 
-  // Handle mobile services toggle
+  // Support pointer and keyboard activation at every navigation size.
   const handleServicesToggle = (e) => {
-    if (window.innerWidth <= 920) {
-      e.preventDefault();
-      setServicesOpen(!servicesOpen);
-    }
+    e.preventDefault();
+    setServicesOpen((current) => !current);
   };
 
-  // Close services dropdown on mobile when clicking outside
+  // Close services dropdown when clicking outside.
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (servicesRef.current && !servicesRef.current.contains(e.target)) {
@@ -76,10 +74,8 @@ export function SiteHeader() {
       }
     };
 
-    if (window.innerWidth <= 920) {
-      document.addEventListener("click", handleClickOutside);
-      return () => document.removeEventListener("click", handleClickOutside);
-    }
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   // Handle ESC key
