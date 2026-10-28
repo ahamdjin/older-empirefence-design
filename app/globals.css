@@ -2853,6 +2853,11 @@ a.pageHero__miniCard:hover {
   font-size: clamp(2.2rem, 4vw, 3.6rem);
 }
 
+.ctaShell .button {
+  white-space: normal;
+  text-align: center;
+}
+
 .ctaShell__form {
   background: rgba(255, 251, 246, 0.96);
   color: var(--ink);
