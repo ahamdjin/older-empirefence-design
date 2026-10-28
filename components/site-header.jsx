@@ -62,7 +62,7 @@ export function SiteHeader() {
 
   // Handle mobile services toggle
   const handleServicesToggle = (e) => {
-    if (window.innerWidth <= 900) {
+    if (window.innerWidth <= 920) {
       e.preventDefault();
       setServicesOpen(!servicesOpen);
     }
@@ -76,7 +76,7 @@ export function SiteHeader() {
       }
     };
 
-    if (window.innerWidth <= 900) {
+    if (window.innerWidth <= 920) {
       document.addEventListener("click", handleClickOutside);
       return () => document.removeEventListener("click", handleClickOutside);
     }
