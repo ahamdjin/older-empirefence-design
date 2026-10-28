@@ -455,7 +455,7 @@ iframe:focus-visible {
   transform-origin: left;
 }
 
-/* Dropdown toggle button (visual only on desktop) */
+/* Dropdown toggle button */
 .navDropdown__toggle {
   display: inline-flex;
   align-items: center;
@@ -465,11 +465,11 @@ iframe:focus-visible {
   background: none;
   border: none;
   color: inherit;
-  cursor: default;
+  cursor: pointer;
   padding: 0;
   opacity: 0.6;
   transition: opacity 200ms var(--ease), transform 200ms var(--ease);
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .navDropdown:hover .navDropdown__toggle {
@@ -488,6 +488,7 @@ iframe:focus-visible {
 
 /* Dropdown Menu - Opens on hover */
 .navDropdown__menu {
+  visibility: hidden;
   position: absolute;
   top: calc(100% + 16px);
   left: 50%;
@@ -515,7 +516,9 @@ iframe:focus-visible {
 }
 
 /* Show dropdown on hover */
-.navDropdown:hover .navDropdown__menu {
+.navDropdown:hover .navDropdown__menu,
+.navDropdown.is-open .navDropdown__menu {
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
@@ -3136,6 +3139,7 @@ a.pageHero__miniCard:hover {
   }
 
   .siteHeader__nav {
+    visibility: hidden;
     position: fixed;
     inset: 86px 18px auto;
     display: grid;
@@ -3150,9 +3154,14 @@ a.pageHero__miniCard:hover {
   }
 
   .siteHeader__nav.is-open {
+    visibility: visible;
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+  }
+
+  .siteHeader__nav:not(.is-open) .navDropdown__menu {
+    visibility: hidden;
   }
 
   /* Mobile Dropdown - Click to open */
@@ -3204,6 +3213,7 @@ a.pageHero__miniCard:hover {
 
   /* Disable hover on mobile */
   .navDropdown:hover .navDropdown__menu {
+    visibility: hidden;
     opacity: 1;
     pointer-events: auto;
     transform: none;
@@ -3215,6 +3225,7 @@ a.pageHero__miniCard:hover {
   }
 
   .navDropdown.is-open .navDropdown__menu {
+    visibility: visible;
     grid-template-rows: 1fr;
     transform: none;
     margin-top: 12px;
